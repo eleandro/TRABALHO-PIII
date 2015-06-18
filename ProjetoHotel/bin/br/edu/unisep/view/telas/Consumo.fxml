@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="550.0" prefWidth="855.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #f5f5f5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.unisep.view.telas.ConsumoController">
+   <children>
+      <Label layoutX="304.0" layoutY="39.0" text="CONSUMO" AnchorPane.topAnchor="39.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="265.0" layoutY="94.0" text="Produto " />
+      <ComboBox fx:id="cmbProduto" layoutX="265.0" layoutY="113.0" prefWidth="150.0" AnchorPane.topAnchor="113.0" />
+      <Label layoutX="538.0" layoutY="99.0" prefHeight="17.0" prefWidth="85.0" text="Quant Produtos" />
+      <TextField fx:id="txtQuantidade" layoutX="533.0" layoutY="116.0" prefHeight="25.0" prefWidth="94.0" />
+      <TableView fx:id="tabConsumo" layoutY="168.0" prefHeight="253.0" prefWidth="800.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="colProduto" prefWidth="284.0" text="Produto" />
+          <TableColumn fx:id="colQuantidade" minWidth="7.0" prefWidth="100.0" text="Quantidade" />
+            <TableColumn fx:id="colvalorUnitario" minWidth="9.0" prefWidth="230.0" text="Valor Unitario" />
+            <TableColumn fx:id="colValorTotal" minWidth="0.0" prefWidth="240.0" text="Valor Total" />
+        </columns>
+      </TableView>
+      <Button layoutX="26.0" layoutY="448.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="79.0" text="Cancelar" />
+      <Button layoutX="124.0" layoutY="448.0" mnemonicParsing="false" onAction="#excluir" prefHeight="25.0" prefWidth="79.0" text="Excluir" />
+      <Button layoutX="225.0" layoutY="448.0" mnemonicParsing="false" onAction="#finalizar" prefHeight="25.0" prefWidth="79.0" text="Finalizar" />
+      <Label layoutX="572.0" layoutY="452.0" text="Total Consumo " />
+      <TextField fx:id="txtTotalConsumo" layoutX="661.0" layoutY="448.0" prefHeight="25.0" prefWidth="111.0" />
+      <ComboBox fx:id="cmbHospedagem" layoutX="40.0" layoutY="115.0" prefHeight="25.0" prefWidth="94.0" AnchorPane.topAnchor="115.0" />
+      <Label layoutX="40.0" layoutY="98.0" text="Hospedagem" AnchorPane.topAnchor="98.0" />
+      <TextField fx:id="txtValorUnitario" layoutX="702.0" layoutY="115.0" prefHeight="25.0" prefWidth="94.0" />
+      <Label layoutX="707.0" layoutY="98.0" prefHeight="17.0" prefWidth="85.0" text="Valor Unitario" />
+   </children>
+</AnchorPane>

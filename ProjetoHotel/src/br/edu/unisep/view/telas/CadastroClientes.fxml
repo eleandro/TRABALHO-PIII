@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #f7F7F7; -fx-border-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.unisep.view.telas.CadastoClientesController">
+   <children>
+      <Label alignment="CENTER" layoutX="302.0" layoutY="37.0" prefHeight="21.0" prefWidth="241.0" text="CADASTRO DE CLIENTES" textAlignment="CENTER" AnchorPane.leftAnchor="256.0" AnchorPane.rightAnchor="256.0" AnchorPane.topAnchor="37.0">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="104.0" layoutY="91.0" text="Nome" AnchorPane.leftAnchor="104.0" AnchorPane.topAnchor="91.0" />
+      <TextField fx:id="txtNome" layoutX="104.0" layoutY="111.0" prefHeight="25.0" prefWidth="370.0" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="248.0" AnchorPane.topAnchor="111.0" />
+      <Label layoutX="22.0" layoutY="161.0" text="CPF" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="161.0" />
+      <TextField fx:id="txtCPF" layoutX="22.0" layoutY="181.0" prefHeight="25.0" prefWidth="227.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="181.0" />
+      <Label layoutX="440.0" layoutY="162.0" text="RG" AnchorPane.rightAnchor="312.0" AnchorPane.topAnchor="162.0" />
+      <TextField fx:id="txtRG" layoutX="440.0" layoutY="184.0" prefHeight="25.0" prefWidth="227.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="183.0" />
+      <Label layoutX="22.0" layoutY="232.0" text="Endereço" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="232.0" />
+      <TextField fx:id="txtEndereco" layoutX="22.0" layoutY="252.0" prefHeight="25.0" prefWidth="227.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="252.0" />
+      <Label layoutX="442.0" layoutY="235.0" prefHeight="17.0" prefWidth="50.0" text="Cidade" AnchorPane.rightAnchor="277.0" AnchorPane.topAnchor="234.0" />
+      <TextField fx:id="txtCidade" layoutX="441.0" layoutY="254.0" prefHeight="25.0" prefWidth="227.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="253.0" />
+      <Label layoutX="22.0" layoutY="301.0" text="Telefone" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="300.0" />
+      <TextField fx:id="txtTelefone" layoutX="22.0" layoutY="325.0" prefHeight="25.0" prefWidth="227.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="320.0" />
+      <Label layoutX="441.0" layoutY="302.0" prefHeight="16.0" prefWidth="46.0" text="E-mail" AnchorPane.rightAnchor="281.0" AnchorPane.topAnchor="300.0" />
+      <TextField fx:id="txtEmail" layoutX="436.0" layoutY="323.0" prefHeight="25.0" prefWidth="227.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="320.0" />
+      <Button layoutX="335.0" layoutY="389.0" mnemonicParsing="false" onAction="#salvar" prefHeight="25.0" prefWidth="74.0" text="Salvar" AnchorPane.rightAnchor="440.0" />
+      <Button layoutX="409.0" layoutY="389.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="74.0" text="Cancelar" AnchorPane.rightAnchor="339.0" />
+   </children>
+</AnchorPane>

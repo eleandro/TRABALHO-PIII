@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #f7f7f7; -fx-border-color: #f5f5f5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.unisep.view.telas.ApartamentoController">
+   <children>
+      <Label layoutX="286.0" layoutY="34.0" prefHeight="27.0" prefWidth="283.0" text="CADASTRO DE APARTAMENTOS" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="233.0" AnchorPane.topAnchor="37.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="236.0" layoutY="100.0" text="Apartamento" AnchorPane.leftAnchor="182.0" AnchorPane.topAnchor="100.0" />
+      <TextField fx:id="txtApartamento" layoutX="236.0" layoutY="120.0" prefHeight="25.0" prefWidth="98.0" AnchorPane.leftAnchor="182.0" AnchorPane.topAnchor="120.0" />
+      <Label layoutX="566.0" layoutY="101.0" prefHeight="17.0" prefWidth="56.0" text="Categoria" AnchorPane.topAnchor="101.0" />
+      <TextField fx:id="txtCategoria" layoutX="566.0" layoutY="121.0" prefHeight="25.0" prefWidth="98.0" />
+      <Label layoutX="237.0" layoutY="195.0" text="Capacidade" AnchorPane.leftAnchor="182.0" />
+      <TextField fx:id="txtCapacidade" layoutX="237.0" layoutY="212.0" prefHeight="25.0" prefWidth="98.0" AnchorPane.leftAnchor="182.0" />
+      <Label layoutX="235.0" layoutY="306.0" text="Observações" AnchorPane.leftAnchor="182.0" />
+      <TextArea fx:id="txtAreaObs" layoutX="256.0" layoutY="277.0" prefHeight="75.0" prefWidth="410.0" />
+      <Button layoutX="539.0" layoutY="408.0" mnemonicParsing="false" onAction="#salvar" prefHeight="25.0" prefWidth="56.0" text="Salvar" />
+      <Button layoutX="602.0" layoutY="408.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+   </children>
+</AnchorPane>

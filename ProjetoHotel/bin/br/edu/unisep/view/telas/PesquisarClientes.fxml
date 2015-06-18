@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="550.0" prefWidth="855.0" style="-fx-background-color: #f7F7F7; -fx-border-color: #F5F5F5;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.unisep.view.telas.PesquisarClientes">
+   <children>
+      <Label contentDisplay="CENTER" layoutX="388.0" layoutY="22.0" prefHeight="27.0" prefWidth="88.0" text="CLIENTES" AnchorPane.topAnchor="37.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="124.0" layoutY="86.0" prefHeight="17.0" prefWidth="34.0" text="Nome" />
+      <TextField fx:id="txtNome" layoutX="171.0" layoutY="82.0" prefHeight="25.0" prefWidth="473.0" />
+      <Button layoutX="660.0" layoutY="82.0" mnemonicParsing="false" onAction="#pesquisar" prefHeight="25.0" prefWidth="80.0" text="Pesquisar" />
+      <TableView fx:id="tabClientes" layoutX="3.0" layoutY="146.0" prefHeight="409.0" prefWidth="817.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="145.0">
+        <columns>
+          <TableColumn fx:id="colNome" prefWidth="209.0" text="Nome" />
+          <TableColumn fx:id="colCPF" prefWidth="132.0" text="CPF" />
+            <TableColumn fx:id="colEndereco" minWidth="0.0" prefWidth="204.0" text="Endereço" />
+            <TableColumn fx:id="colCidade" minWidth="0.0" prefWidth="160.0" text="Cidade" />
+            <TableColumn fx:id="colTelefone" minWidth="0.0" prefWidth="152.0" text="Telefone" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
