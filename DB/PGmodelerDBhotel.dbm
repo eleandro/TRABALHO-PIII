@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel>
+<schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="schhotel" fill-color="#e1e1e1">
+	<comment><![CDATA[Pacote hote]]></comment>
+</schema>
+
+<database name="novo_banco_de_dados">
+</database>
+
+<table name="tb_cliente">
+	<schema name="schhotel"/>
+	<comment><![CDATA[Tabela de castro de hosopede]]></comment>
+	<position x="8" y="8"/>
+	<column name="id_cliente" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[chave primaria da tabela]]></comment>
+	</column>
+	<column name="ds_nome" not-null="true">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Nome dos hospode]]></comment>
+	</column>
+	<column name="nr_cpf" not-null="true" default-value="'CPF NF'">
+		<type name="char" length="11"/>
+		<comment><![CDATA[O CPF nao podera ter duplicidade]]></comment>
+	</column>
+	<column name="ds_endereco" not-null="true">
+		<type name="varchar" length="40"/>
+		<comment><![CDATA[Endereco do Hospode rua ]]></comment>
+	</column>
+	<column name="ds_cidade" not-null="true">
+		<type name="varchar" length="40"/>
+		<comment><![CDATA[Cidade do hospede]]></comment>
+	</column>
+	<column name="nr_rg">
+		<type name="varchar" length="15"/>
+		<comment><![CDATA[Numero de identidade]]></comment>
+	</column>
+	<column name="nr_telefone">
+		<type name="varchar" length="12"/>
+		<comment><![CDATA[Contado do hospede]]></comment>
+	</column>
+	<column name="ds_email">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[O e-mail de cliente]]></comment>
+	</column>
+	<constraint name="pk_hospede" type="pk-constr" factor="10" table="schhotel.tb_cliente">
+		<columns names="id_cliente" ref-type="src-columns"/>
+		<comment><![CDATA[chave primaria da tabela Hospede]]></comment>
+	</constraint>
+	<constraint name="uq_cpf" type="uq-constr" factor="10" table="schhotel.tb_cliente">
+		<columns names="nr_cpf" ref-type="src-columns"/>
+		<comment><![CDATA[O CPF deve ser  Unico ]]></comment>
+	</constraint>
+	<constraint name="ck_cpf_onze_caracteres" type="ck-constr" table="schhotel.tb_cliente">
+			<expression><![CDATA[length(nr_cpf) =11]]></expression>
+		<comment><![CDATA[O CPF poderar conter 11 caracteres nem valor maior nem menor]]></comment>
+	</constraint>
+</table>
+
+<table name="tb_produtos">
+	<schema name="schhotel"/>
+	<comment><![CDATA[Tabela de produtos]]></comment>
+	<position x="705" y="267"/>
+	<column name="id_produto" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[atributo identificador]]></comment>
+	</column>
+	<column name="ds_produto" not-null="true">
+		<type name="varchar" length="60"/>
+		<comment><![CDATA[Descricao de produtos]]></comment>
+	</column>
+	<column name="vl_unt_produto" not-null="true">
+		<type name="numeric" length="12" precision="3"/>
+	</column>
+	<column name="id_categoria_produto" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[chave estrangeira ]]></comment>
+	</column>
+	<constraint name="pk_produto" type="pk-constr" factor="10" table="schhotel.tb_produtos">
+		<columns names="id_produto" ref-type="src-columns"/>
+		<comment><![CDATA[Chave Primaria]]></comment>
+	</constraint>
+</table>
+
+<table name="tb_consumo">
+	<schema name="schhotel"/>
+	<comment><![CDATA[Tabela de consumação do clientes]]></comment>
+	<position x="729" y="2"/>
+	<column name="id_consumo" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[Identificado do consumo]]></comment>
+	</column>
+	<column name="vl_total_unitario" not-null="true">
+		<type name="numeric" length="12" precision="3"/>
+		<comment><![CDATA[Valor total dos produtos ]]></comment>
+	</column>
+	<column name="vl_total" not-null="true">
+		<type name="numeric" length="12" precision="3"/>
+		<comment><![CDATA[valor total dos produtos]]></comment>
+	</column>
+	<column name="qt_consumo" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[Quantidade consumida]]></comment>
+	</column>
+	<column name="id_produto" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[chave estrangeira da tabela produtos]]></comment>
+	</column>
+	<column name="id_hospedagem">
+		<type name="integer"/>
+		<comment><![CDATA[chave estrangeira]]></comment>
+	</column>
+	<constraint name="pk_consumo" type="pk-constr" factor="10" table="schhotel.tb_consumo">
+		<columns names="id_consumo" ref-type="src-columns"/>
+		<comment><![CDATA[chave primaria da tabela consumo]]></comment>
+	</constraint>
+</table>
+
+<table name="tb_financero">
+	<schema name="schhotel"/>
+	<comment><![CDATA[Financeiro do hotel]]></comment>
+	<position x="12" y="455"/>
+	<column name="id_financeiro" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[Identificador da tabela Financeiro]]></comment>
+	</column>
+	<column name="vl_credito" not-null="true">
+		<type name="numeric" length="12" precision="3"/>
+		<comment><![CDATA[valor do contas a pagar do cliente]]></comment>
+	</column>
+	<column name="id_hospedagem" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[chave estrangeira ]]></comment>
+	</column>
+	<column name="vl_debito">
+		<type name="numeric" length="12" precision="3"/>
+		<comment><![CDATA[valor de debito do caixa]]></comment>
+	</column>
+	<constraint name="pk_financeiro" type="pk-constr" factor="10" table="schhotel.tb_financero">
+		<columns names="id_financeiro" ref-type="src-columns"/>
+		<comment><![CDATA[chave primaria ]]></comment>
+	</constraint>
+</table>
+
+<table name="tb_hospedagem">
+	<schema name="schhotel"/>
+	<comment><![CDATA[Hospedagem de Hospede]]></comment>
+	<position x="361" y="171"/>
+	<column name="id_hospedagem" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[identificador do locao chave primaria]]></comment>
+	</column>
+	<column name="dt_entrada" not-null="true">
+		<type name="date"/>
+		<comment><![CDATA[data de inicio da locacao]]></comment>
+	</column>
+	<column name="dt_saida" not-null="true">
+		<type name="date"/>
+		<comment><![CDATA[data de saida do apartamento]]></comment>
+	</column>
+	<column name="ds_observacao">
+		<type name="varchar" length="200"/>
+		<comment><![CDATA[observacao da locacao]]></comment>
+	</column>
+	<column name="pc_desconto">
+		<type name="numeric" length="12" precision="2"/>
+		<comment><![CDATA[percentual de desconto que o hospede ira ter]]></comment>
+	</column>
+	<column name="id_apartamento" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[chave estrangeira]]></comment>
+	</column>
+	<column name="id_cliente" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[chave estrangeira tabela clientes]]></comment>
+	</column>
+	<column name="nr_cafe" not-null="true">
+		<type name="integer"/>
+	</column>
+	<column name="vl_total_diaria" not-null="true">
+		<type name="numeric" length="12" precision="3"/>
+		<comment><![CDATA[Total da diaria do Hospede]]></comment>
+	</column>
+	<column name="vl_diaria" not-null="true">
+		<type name="numeric" length="12" precision="3"/>
+		<comment><![CDATA[Valor do pernoite]]></comment>
+	</column>
+	<constraint name="pk_hospedagem" type="pk-constr" factor="10" table="schhotel.tb_hospedagem">
+		<columns names="id_hospedagem" ref-type="src-columns"/>
+		<comment><![CDATA[chave primaria tabela apartamento]]></comment>
+	</constraint>
+</table>
+
+<table name="tb_categoria_produto">
+	<schema name="schhotel"/>
+	<comment><![CDATA[Grupo de produtos]]></comment>
+	<position x="710" y="491"/>
+	<column name="id_categoria_produto" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[Identificador da tabela grupo]]></comment>
+	</column>
+	<column name="ds_categoria" not-null="true">
+		<type name="varchar" length="50"/>
+		<comment><![CDATA[Descricao do grupo de produtos]]></comment>
+	</column>
+	<constraint name="pk_grupo_produto" type="pk-constr" factor="10" table="schhotel.tb_categoria_produto">
+		<columns names="id_categoria_produto" ref-type="src-columns"/>
+		<comment><![CDATA[chave primaria]]></comment>
+	</constraint>
+</table>
+
+<table name="tb_apartamento">
+	<schema name="schhotel"/>
+	<comment><![CDATA[tabela de cadastro de apartamento]]></comment>
+	<position x="383" y="478"/>
+	<column name="id_apartamento" not-null="true">
+		<type name="serial"/>
+		<comment><![CDATA[identificador da tabela apartamento]]></comment>
+	</column>
+	<column name="ds_categoria" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[descricao da categoria(1,2)]]></comment>
+	</column>
+	<column name="nr_apartamento" not-null="true">
+		<type name="integer"/>
+		<comment><![CDATA[o status do apartamento 0 livre e 1 ocupado]]></comment>
+	</column>
+	<column name="ds_observacao">
+		<type name="varchar" length="100"/>
+	</column>
+	<column name="ds_capacidade" not-null="true">
+		<type name="integer" length="6"/>
+	</column>
+	<constraint name="pk_apartamento" type="pk-constr" factor="10" table="schhotel.tb_apartamento">
+		<columns names="id_apartamento" ref-type="src-columns"/>
+		<comment><![CDATA[chave primaria]]></comment>
+	</constraint>
+	<constraint name="ck_status_zero_livre_um_ocupado" type="ck-constr" table="schhotel.tb_apartamento">
+			<expression><![CDATA[(nr_status in (0,1))]]></expression>
+		<comment><![CDATA[0 para livre e 1 para Ocupado]]></comment>
+	</constraint>
+</table>
+
+<constraint name="fk_tb_produtos_tb_grupo_produto" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="schhotel.tb_categoria_produto" table="schhotel.tb_produtos">
+	<columns names="id_categoria_produto" ref-type="src-columns"/>
+	<columns names="id_categoria_produto" ref-type="dst-columns"/>
+		<comment><![CDATA[chave estrangeira tabelas produtos e grupo]]></comment>
+</constraint>
+<constraint name="fk_tb_consumo_tb_produtos" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="schhotel.tb_produtos" table="schhotel.tb_consumo">
+	<columns names="id_produto" ref-type="src-columns"/>
+	<columns names="id_produto" ref-type="dst-columns"/>
+		<comment><![CDATA[chave estrangeira das tabelas consumo e produtos]]></comment>
+</constraint>
+<constraint name="fk_tb_consumo_tb_hospedagem" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="schhotel.tb_hospedagem" table="schhotel.tb_consumo">
+	<columns names="id_hospedagem" ref-type="src-columns"/>
+	<columns names="id_hospedagem" ref-type="dst-columns"/>
+		<comment><![CDATA[chave estrangeira]]></comment>
+</constraint>
+<constraint name="fk_tb_financeiro_tb_hospedagem" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="schhotel.tb_hospedagem" table="schhotel.tb_financero">
+	<columns names="id_hospedagem" ref-type="src-columns"/>
+	<columns names="id_hospedagem" ref-type="dst-columns"/>
+		<comment><![CDATA[chave estrangeira]]></comment>
+</constraint>
+<constraint name="fk_tb_locacao_tb_cliente" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="schhotel.tb_cliente" table="schhotel.tb_hospedagem">
+	<columns names="id_cliente" ref-type="src-columns"/>
+	<columns names="id_cliente" ref-type="dst-columns"/>
+		<comment><![CDATA[chave estrangeira]]></comment>
+</constraint>
+<constraint name="fk_tb_hospedagem_tb_apartamento" type="fk-constr"	 comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="schhotel.tb_apartamento" table="schhotel.tb_hospedagem">
+	<columns names="id_apartamento" ref-type="src-columns"/>
+	<columns names="id_apartamento" ref-type="dst-columns"/>
+		<comment><![CDATA[chave estrangeira]]></comment>
+</constraint>
+<relationship name="rel_tb_locacao_tb_cliente" type="relfk"
+	 src-table="schhotel.tb_hospedagem"
+	 dst-table="schhotel.tb_cliente"
+	 src-required="true" dst-required="true">
+	<label ref-type="name-label">
+		<position x="-79.5243" y="-10.5486"/>
+	</label>
+</relationship>
+
+<relationship name="rel_tb_produtos_tb_grupo" type="relfk"
+	 src-table="schhotel.tb_produtos"
+	 dst-table="schhotel.tb_categoria_produto"
+	 src-required="true" dst-required="true"/>
+
+<relationship name="rel_tb_consumo_tb_produtos" type="relfk"
+	 src-table="schhotel.tb_consumo"
+	 dst-table="schhotel.tb_produtos"
+	 src-required="true" dst-required="true">
+	<label ref-type="src-label">
+		<position x="-10.3837" y="5.60001"/>
+	</label>
+</relationship>
+
+<relationship name="rel_tb_financero_tb_hospedagem" type="relfk"
+	 src-table="schhotel.tb_financero"
+	 dst-table="schhotel.tb_hospedagem"
+	 src-required="true" dst-required="true">
+	<label ref-type="name-label">
+		<position x="-115.774" y="-25.7986"/>
+	</label>
+</relationship>
+
+<relationship name="rel_tb_consumo_tb_hospedagem" type="relfk"
+	 src-table="schhotel.tb_consumo"
+	 dst-table="schhotel.tb_hospedagem"
+	 src-required="true" dst-required="true">
+	<label ref-type="name-label">
+		<position x="-104.024" y="-49.2985"/>
+	</label>
+</relationship>
+
+<relationship name="rel_tb_hospedagem_tb_apartamento" type="relfk"
+	 src-table="schhotel.tb_hospedagem"
+	 dst-table="schhotel.tb_apartamento"
+	 src-required="true" dst-required="true">
+	<label ref-type="src-label">
+		<position x="12.1801" y="3.60001"/>
+	</label>
+	<label ref-type="dst-label">
+		<position x="12.6048" y="-4.20001"/>
+	</label>
+	<label ref-type="name-label">
+		<position x="108.476" y="0.201447"/>
+	</label>
+</relationship>
+
+</dbmodel>
